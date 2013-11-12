@@ -1,6 +1,7 @@
 Hawking
 =======
 
+[![Gem Version](https://badge.fury.io/rb/hawking.png)](http://badge.fury.io/rb/hawking)
 [![Build Status](https://travis-ci.org/rogeriozambon/hawking.png?branch=master)](https://travis-ci.org/rogeriozambon/hawking)
 [![Code Climate](https://codeclimate.com/github/rogeriozambon/hawking.png)](https://codeclimate.com/github/rogeriozambon/hawking)
 
