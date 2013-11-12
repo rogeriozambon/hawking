@@ -5,7 +5,7 @@ Hawking
 [![Build Status](https://travis-ci.org/rogeriozambon/hawking.png?branch=master)](https://travis-ci.org/rogeriozambon/hawking)
 [![Code Climate](https://codeclimate.com/github/rogeriozambon/hawking.png)](https://codeclimate.com/github/rogeriozambon/hawking)
 
-Background job queueing using Socket. Inspired in the [Stalkeg gem](https://github.com/han/stalker).
+Background job queueing using Socket. Inspired in the [Stalker gem](https://github.com/han/stalker).
 
 Queueing jobs
 -------------
