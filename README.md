@@ -12,27 +12,31 @@ Queueing jobs
 
 From anywhere in your app:
 
-    require 'hawking'
+~~~.ruby
+require 'hawking'
 
-    Hawking::Queue.new('email.send', :to => 'joe@example.com')
-    Hawking::Queue.new('post.cleanup', :id => post.id)
+Hawking::Queue.new('email.send', :to => 'joe@example.com')
+Hawking::Queue.new('post.cleanup', :id => post.id)
+~~~
 
 Working jobs
 ------------
 
 In a standalone file, typically jobs.rb or worker.rb:
 
-    require 'hawking'
+~~~.ruby
+require 'hawking'
 
-    extend Hawking
+extend Hawking
 
-    job 'email.send' do |args|
-      Pony.send(:to => args['to'], :subject => "Hello there")
-    end
+job 'email.send' do |args|
+  Pony.send(:to => args['to'], :subject => "Hello there")
+end
 
-    job 'post.cleanup' do |args|
-      Post.find(args['id']).cleanup
-    end
+job 'post.cleanup' do |args|
+  Post.find(args['id']).cleanup
+end
+~~~
 
 Running
 -------
