@@ -17,17 +17,17 @@ module Hawking
 
   def work_jobs(server)
     Thread.start(server.accept) do |listener|
-      job = JSON.parse listener.gets, symbolize_names: true
-
-      puts "Working on #{job[:queue]} (#{job[:data]})"
-
       begin
-        Timeout::timeout(120) do
+        Timeout::timeout(20) do
+          puts "Working on #{job[:queue]} (#{job[:data]})"
+      
+          job = JSON.parse listener.gets, symbolize_names: true
+          
           handler = @@jobs[job[:queue]]
           handler.call(job[:data])
         end
       rescue Timeout::Error
-        raise "The job hit 120 seconds timeout"
+        raise "The job hit 20 seconds timeout"
       end
     end
   end
@@ -47,7 +47,7 @@ module Hawking
     end
 
     def put(queue, data)
-      info = JSON.generate :queue => queue, :data => data
+      info = JSON.generate queue: queue, data: data
 
       @socket.write info
       @socket.close
