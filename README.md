@@ -45,7 +45,7 @@ Hawking:
 
     $ sudo gem install hawking
 
-Now run a worker using the stalk binary:
+Now run a worker using the binary:
 
     $ hawking jobs.rb
     Working 2 jobs: [ email.send post.cleanup ]
