@@ -15,8 +15,8 @@ From anywhere in your app:
 ~~~.ruby
 require 'hawking'
 
-Hawking::Queue.new('email.send', :to => 'joe@example.com')
-Hawking::Queue.new('post.cleanup', :id => post.id)
+Hawking::Queue.new('email.send', to: 'joe@example.com')
+Hawking::Queue.new('post.cleanup', id: post.id)
 ~~~
 
 Working jobs
@@ -30,11 +30,11 @@ require 'hawking'
 extend Hawking
 
 job 'email.send' do |args|
-  Pony.send(:to => args['to'], :subject => "Hello there")
+  Pony.send(to: args[:to], subject: "Hello there")
 end
 
 job 'post.cleanup' do |args|
-  Post.find(args['id']).cleanup
+  Post.find(args[:id]).cleanup
 end
 ~~~
 
@@ -49,14 +49,9 @@ Now run a worker using the binary:
 
     $ hawking jobs.rb
     Working 2 jobs: [ email.send post.cleanup ]
-    Working send.email (email=hello@example.com)
+    Working send.email ({:to=>joe@example.com)
 
 Hawk will log to stdout as it starts working each job.
-
-Filter to a list of jobs you wish to run with an argument:
-
-    $ hawking jobs.rb email.send
-    Working 1 jobs: [ email.send ]
 
 Running the tests
 -----------------
