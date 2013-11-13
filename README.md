@@ -49,7 +49,7 @@ Now run a worker using the binary:
 
     $ hawking jobs.rb
     Working 2 jobs: [ email.send post.cleanup ]
-    Working send.email ({:to=>joe@example.com)
+    Working send.email ({:to=>joe@example.com})
 
 Hawk will log to stdout as it starts working each job.
 
