@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage      = "http://github.com/rogeriozambon/hawking"
   s.summary       = "Background job queueing using Socket. Inspired in the Stalkeg gem."
   s.description   = s.summary
+  s.license       = "MIT"
 
   s.executables   = ["hawking"]
 
