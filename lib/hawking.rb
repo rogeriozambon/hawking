@@ -5,7 +5,7 @@ require "timeout"
 module Hawking
   extend self
 
-  VERSION = "0.1"
+  VERSION = "0.2"
 
   def run
     puts "Working #{@@jobs.size} jobs: [ #{@@jobs.keys.join(' ')} ]\r\r"
