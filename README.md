@@ -15,15 +15,10 @@ From anywhere in your app:
 ~~~.ruby
 require 'hawking'
 
-<<<<<<< HEAD
 hawking = Hawking::Queue.new
 
 hawking.put 'email.send', to: 'joe@example.com'
 hawking.put 'post.cleanup', id: post.id
-=======
-Hawking::Queue.new('email.send', to: 'joe@example.com')
-Hawking::Queue.new('post.cleanup', id: post.id)
->>>>>>> 30cbef9f47512ea91dba2776106e313471ede904
 ~~~
 
 Working jobs
@@ -36,21 +31,12 @@ require 'hawking'
 
 extend Hawking
 
-<<<<<<< HEAD
 job 'email.send' do |data|
   Pony.send(to: data[:to], subject: "Hello there")
 end
 
 job 'post.cleanup' do |data|
   Post.find(data[:id]).cleanup
-=======
-job 'email.send' do |args|
-  Pony.send(to: args[:to], subject: "Hello there")
-end
-
-job 'post.cleanup' do |args|
-  Post.find(args[:id]).cleanup
->>>>>>> 30cbef9f47512ea91dba2776106e313471ede904
 end
 ~~~
 
@@ -65,13 +51,9 @@ Now run a worker using the binary:
 
     $ hawking jobs.rb
     Working 2 jobs: [ email.send post.cleanup ]
-<<<<<<< HEAD
 
     Working send.email ({:to=>joe@example.com})
     Working post.cleanup ({:id=>1})
-=======
-    Working send.email ({:to=>joe@example.com})
->>>>>>> 30cbef9f47512ea91dba2776106e313471ede904
 
 Hawking will log to stdout as it starts working each job.
 
