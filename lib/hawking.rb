@@ -8,7 +8,7 @@ module Hawking
   VERSION = "0.1"
 
   def run
-    puts "Working #{@@jobs.size} jobs: [ #{@@jobs.keys.join(' ')} ]"
+    puts "Working #{@@jobs.size} jobs: [ #{@@jobs.keys.join(' ')} ]\r\r"
 
     server = TCPServer.open "127.0.0.1", 4481
 
@@ -19,10 +19,10 @@ module Hawking
     Thread.start(server.accept) do |listener|
       begin
         Timeout::timeout(20) do
-          puts "Working on #{job[:queue]} (#{job[:data]})"
-      
+          puts "Working on #{job[:queue]} (#{job[:data]})\r"
+
           job = JSON.parse listener.gets, symbolize_names: true
-          
+
           handler = @@jobs[job[:queue]]
           handler.call(job[:data])
         end

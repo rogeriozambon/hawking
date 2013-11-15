@@ -2,13 +2,10 @@
 STDERR.sync = STDOUT.sync = true
 
 require "hawking"
+
 extend Hawking
 
-usage = "hawking <jobs.rb> [<job>[,<job>,..]]"
-
-file = ARGV.shift or abort usage
-jobs = ARGV.shift.split(',') rescue nil
-
+file = ARGV.shift or abort "hawking <jobs.rb>"
 file = "./#{file}" unless file.match(/^[\/.]/)
 
 require file

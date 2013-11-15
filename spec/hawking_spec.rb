@@ -2,12 +2,12 @@ require "spec_helper"
 
 describe "Hawking" do
   before do
-    $stdout.stub(:write).and_return ""
+    $stdout.stub(:write).and_return nil
   end
 
   it "storing a job" do
     Hawking.job "example" do |data|
-      puts "Some example with #{data}"
+      puts "Some example with #{data.inspect}"
     end
 
     jobs = Hawking.jobs
@@ -22,7 +22,7 @@ describe "Hawking" do
     server = TCPServer.open "127.0.0.1", 4481
 
     hawking = Hawking::Queue.new
-    hawking.put "example", :data => "john@example.org"
+    hawking.put "example", data: "john@example.org"
 
     data = JSON.parse server.accept.gets, symbolize_names: true
 
@@ -37,13 +37,13 @@ describe "Hawking" do
 
   it "works" do
     Hawking.job "example" do |data|
-      puts "Some example with #{data}"
+      puts "Some example with #{data.inspect}"
     end
 
     server = TCPServer.open "127.0.0.1", 4481
 
     hawking = Hawking::Queue.new
-    hawking.put "example", :data => "john@example.org"
+    hawking.put "example", data: "john@example.org"
 
     Hawking.work_jobs server
 
