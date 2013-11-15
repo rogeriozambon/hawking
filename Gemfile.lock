@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hawking (0.2)
+    hawking (0.3)
       json_pure
 
 GEM
