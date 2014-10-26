@@ -3,8 +3,6 @@ STDERR.sync = STDOUT.sync = true
 
 require "hawking"
 
-extend Hawking
-
 file = ARGV.shift or abort "hawking <jobs.rb>"
 file = "./#{file}" unless file.match(/^[\/.]/)
 
@@ -15,4 +13,4 @@ trap("INT") do
   exit
 end
 
-Hawking.run
+Hawking::Runner.new.execute
