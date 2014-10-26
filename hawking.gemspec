@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency "json_pure"
+  s.add_dependency "json_pure", ">= 1.8"
 
   s.add_development_dependency "rake"
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec", ">= 3.1.0"
 end
