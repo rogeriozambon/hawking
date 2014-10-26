@@ -13,12 +13,12 @@ Queueing jobs
 From anywhere in your app:
 
 ~~~.ruby
-require 'hawking'
+require "hawking"
 
 hawking = Hawking::Queue.new
 
-hawking.put 'email.send', to: 'joe@example.com'
-hawking.put 'post.cleanup', id: post.id
+hawking.put("email.send", to: "joe@example.com")
+hawking.put("post.cleanup", id: post.id)
 ~~~
 
 Working jobs
@@ -27,15 +27,13 @@ Working jobs
 In a standalone file, typically jobs.rb or worker.rb:
 
 ~~~.ruby
-require 'hawking'
+require "hawking"
 
-extend Hawking
-
-job 'email.send' do |data|
-  Pony.send(to: data[:to], subject: "Hello there")
+Hawking::Job.put("email.send") do |data|
+  Pony.send(to: data[:to], subject: 'Hello there')
 end
 
-job 'post.cleanup' do |data|
+Hawking::Job.put("post.cleanup") do |data|
   Post.find(data[:id]).cleanup
 end
 ~~~
@@ -45,7 +43,7 @@ Running
 
 Hawking:
 
-    $ sudo gem install hawking
+    $ gem install hawking
 
 Now run a worker using the binary:
 
